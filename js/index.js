@@ -22,14 +22,13 @@
        var now = {row: 1}, prev = {row: 0};
 
        function change() {
-           console.log('now' + now.row + '%' + 'prev' + prev.row);
            if (isAnimating) {
                isAnimating = false;
                var prevPage = ".page-" + prev.row + "-" + 1, nowPage = ".page-" + now.row + "-" + 1;
                $(nowPage).removeClass("hide");
                $(prevPage).addClass(outClass);
                $(nowPage).addClass(inClass);
-               $(nowPage).find("img").addClass("hide")
+               $(nowPage).find("img").addClass("hide");
                setTimeout(function () {
                    $(prevPage).removeClass('page-current');
                    $(prevPage).removeClass(outClass);
@@ -51,7 +50,7 @@
            startY = e.touches[0].clientY;
        });
        document.addEventListener('touchmove', function (e) {
-           e.preventDefault();
+           e.preventDefault();//默认行为就是滚动
        });
 
        document.addEventListener('touchend', function (e) {
@@ -62,7 +61,7 @@
            switch (direction) {
                case 0:
                    break;
-               case 1:
+               case 1://向上
                    if (isAnimating == false) {
                        return
                    }
@@ -82,8 +81,9 @@
                        return
                    }
                    if (now.row == 1) {
-                       now.row = $('.page').size();
-                       prev.row = 1;
+                       //now.row = $('.page').size();
+                       //prev.row = 1;\
+                       return;
                    } else {
                        now.row = now.row - 1;
                        prev.row = now.row + 1;
@@ -97,6 +97,8 @@
        function getSlidDirection(startX, startY, endX, endY) {
            var dy = startY - endY;
            var dx = endX - startX;
+           console.log( startY);
+           console.log( endY);
            var result;
            var dis = getSlidDis(dx, dy);
 
@@ -130,8 +132,4 @@
         }
 
     });
-
-
-
-
 })();

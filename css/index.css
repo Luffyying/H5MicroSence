@@ -217,6 +217,13 @@ body{
     top:20%;
     margin-left:-140px;
 }
+.page-5-1 .img_2 {
+    height:auto;width:260px;
+    position:absolute;
+    left:50%;
+    top:67%;
+    margin-left:-130px;
+}
 
 #audiocontainer{
     width:30px;height:30px;
